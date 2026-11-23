@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoltCore Pro 20K | 65W Ultra-Fast Portable Power</title>
+    <!-- Google Fonts: Inter & JetBrains Mono for technical specs/LED display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#090A0F',
+                        carbon: '#12151E',
+                        slateDark: '#1A1F2C',
+                        cyanGlow: '#00F0FF',
+                        amberPulse: '#FFB800',
+                    },
+                    boxShadow: {
+                        'cyan-glow': '0 0 25px rgba(0, 240, 255, 0.25)',
+                        'amber-glow': '0 0 25px rgba(255, 184, 0, 0.25)',
+                        'hardware': '0 30px 60px -15px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-obsidian text-slate-100 font-sans antialiased selection:bg-cyanGlow selection:text-obsidian overflow-x-hidden">
+
+    <!-- Sticky Glassmorphism Navigation -->
+    <header class="fixed top-0 inset-x-0 z-40 bg-obsidian/80 backdrop-blur-xl border-b border-slate-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-cyanGlow to-blue-600 flex items-center justify-center shadow-cyan-glow group-hover:scale-105 transition-transform">
+                    <svg class="w-5 h-5 text-obsidian" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                <span class="font-bold text-lg sm:text-xl tracking-tight text-white">
+                    VOLT<span class="text-cyanGlow">CORE</span> <span class="text-xs font-mono uppercase tracking-widest text-slate-400 ml-1 hidden sm:inline">Pro 20K</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#features" class="hover:text-cyanGlow transition-colors">Engineering</a>
+                <a href="#simulator" class="hover:text-cyanGlow transition-colors">Power Simulator</a>
+                <a href="#specs" class="hover:text-cyanGlow transition-colors">Tech Specs</a>
+                <a href="#reviews" class="hover:text-cyanGlow transition-colors">Reviews</a>
+            </nav>
+
+            <!-- Action & Cart Controls -->
+            <div class="flex items-center gap-3">
+                <button id="openCartBtn" class="relative p-2.5 rounded-xl bg-slateDark/80 hover:bg-slate-800 border border-slate-700/70 text-slate-200 transition-all" aria-label="Open Cart">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                    <span id="navCartBadge" class="hidden absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amberPulse text-obsidian font-mono font-bold text-xs flex items-center justify-center">0</span>
+                </button>
+                <a href="#preorder" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyanGlow hover:bg-cyan-300 text-obsidian font-semibold text-sm shadow-cyan-glow transition-all">
+                    Pre-Order Now
+                </a>
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl bg-slateDark/80 border border-slate-700/70 text-slate-200" aria-label="Menu">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-carbon border-b border-slate-800 px-4 pt-2 pb-5 space-y-2">
+            <a href="#features" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slateDark">Engineering</a>
+            <a href="#simulator" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slateDark">Power Simulator</a>
+            <a href="#specs" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slateDark">Tech Specs</a>
+            <a href="#reviews" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slateDark">Reviews</a>
+            <a href="#preorder" class="block text-center mt-3 px-4 py-3 rounded-xl bg-cyanGlow text-obsidian font-semibold">Pre-Order — $89</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-28 pb-20 sm:pt-36 sm:pb-28 overflow-hidden">
+        <!-- Ambient Radial Glows -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyanGlow/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-1/4 w-80 h-80 bg-amberPulse/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Copy Column -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slateDark/90 border border-slate-700/80 text-xs font-mono uppercase tracking-wider text-cyanGlow">
+                        <span class="w-2 h-2 rounded-full bg-cyanGlow animate-pulse"></span>
+                        Batch 01 Shipping Soon • GaN-X Architecture
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.08] text-white">
+                        Desktop-Class Power. <br>
+                        <span class="bg-gradient-to-r from-cyanGlow via-sky-300 to-amberPulse bg-clip-text text-transparent">Pocket-Sized Armor.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Meet <strong class="text-slate-200">VoltCore Pro 20K</strong>—an aerospace-grade anodized aluminum power bank engineered with <span class="text-cyanGlow font-medium">65W USB-C Power Delivery</span>, real-time OLED telemetry, and a 20,000mAh high-density cell array that recharges laptops at full throttle.
+                    </p>
+
+                    <!-- Primary CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="addToCart('VoltCore Pro 20K — Matte Obsidian', 89)" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-cyanGlow hover:bg-cyan-300 text-obsidian font-bold text-base shadow-cyan-glow transition-all flex items-center justify-center gap-2.5">
+                            <span>Pre-Order Now — $89</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </button>
+                        <a href="#simulator" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slateDark hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-base transition-all text-center">
+                            Test Device Charge Speeds
+                        </a>
+                    </div>
+
+                    <!-- Trust Strip -->
+                    <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs font-mono text-slate-400">
+                        <div class="flex items-center gap-2">
+                            <span class="text-amberPulse">✓</span> TSA / FAA Airline Approved (74Wh)
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-amberPulse">✓</span> 24-Month Warranty
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-amberPulse">✓</span> 100W Braided USB-C Cable Included
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hardware Visual Representation (Interactive CSS/SVG Powerbank) -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                    <div class="relative w-full max-w-[320px] sm:max-w-[350px] group">
+                        <!-- Outer Chassis Glow -->
+                        <div id="chassisGlow" class="absolute -inset-2 rounded-[2.6rem] bg-gradient-to-b from-cyanGlow/30 via-transparent to-amberPulse/20 blur-xl opacity-75 transition-opacity duration-500"></div>
+                        
+                        <!-- Matte-Black Anodized Aluminum Body -->
+                        <div class="relative rounded-[2.25rem] bg-gradient-to-br from-[#1E222D] via-[#12141B] to-[#090A0E] p-5 sm:p-6 border border-slate-700/80 shadow-hardware">
+                            
+                            <!-- Top Port Header Bar -->
+                            <div class="flex items-center justify-between px-3 py-2 mb-5 rounded-xl bg-black/50 border border-slate-800/90">
+                                <div class="flex items-center gap-2">
+                                    <!-- USB-C1 65W Port -->
+                                    <div class="flex flex-col items-center">
+                                        <div class="w-7 h-2.5 rounded-full bg-slate-900 border border-cyanGlow/70 flex items-center justify-center">
+                                            <div class="w-4 h-0.5 bg-cyanGlow"></div>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-cyanGlow mt-1">C1 65W</span>
+                                    </div>
+                                    <!-- USB-C2 30W Port -->
+                                    <div class="flex flex-col items-center">
+                                        <div class="w-7 h-2.5 rounded-full bg-slate-900 border border-slate-600 flex items-center justify-center">
+                                            <div class="w-4 h-0.5 bg-slate-500"></div>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-slate-400 mt-1">C2 30W</span>
+                                    </div>
+                                </div>
+                                <!-- USB-A 22.5W Port -->
+                                <div class="flex flex-col items-center">
+                                    <div class="w-8 h-3 rounded-sm bg-slate-900 border border-amberPulse/70 flex items-center justify-center">
+                                        <div class="w-6 h-1 bg-amberPulse/80"></div>
+                                    </div>
+                                    <span class="text-[9px] font-mono text-amberPulse mt-1">USB-A</span>
+                                </div>
+                            </div>
+
+                            <!-- Embedded Smart OLED Telemetry Screen -->
+                            <div class="rounded-2xl bg-[#050608] border border-slate-800 p-4 sm:p-5 shadow-inner relative overflow-hidden">
+                                <!-- Subtle Screen Scanline Overlay -->
+                                <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-3">
+                                    <span id="oledModeLabel" class="flex items-center gap-1.5 text-cyanGlow">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-cyanGlow animate-ping"></span>
+                                        PD FAST OUT
+                                    </span>
+                                    <span id="oledTemp">31.4°C</span>
+                                </div>
+
+                                <!-- Main Percentage & Ring SVG -->
+                                <div class="flex items-center justify-between my-2">
+                                    <div>
+                                        <div class="flex items-baseline gap-1">
+                                            <span id="oledPercent" class="text-4xl sm:text-5xl font-mono font-bold text-white tracking-tighter">98</span>
+                                            <span class="text-lg font-mono text-cyanGlow">%</span>
+                                        </div>
+                                        <p id="oledTimeRemaining" class="text-xs font-mono text-slate-400 mt-1">1h 42m remaining</p>
+                                    </div>
+
+                                    <!-- SVG Circular Gauge -->
+                                    <svg class="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
+                                        <path class="text-slate-800" stroke-width="3" stroke="currentColor" fill="none"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path id="oledRing" class="text-cyanGlow transition-all duration-500" stroke-width="3" stroke-dasharray="98, 100" stroke-linecap="round" stroke="currentColor" fill="none"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    </svg>
+                                </div>
+
+                                <!-- Live Wattage Metrics Grid -->
+                                <div class="grid grid-cols-3 gap-2 pt-3 mt-3 border-t border-slate-800/90 font-mono text-center">
+                                    <div class="bg-slate-900/80 rounded-lg p-1.5">
+                                        <div class="text-[9px] text-slate-500">OUTPUT</div>
+                                        <div id="oledWatts" class="text-xs sm:text-sm font-bold text-cyanGlow">65.0W</div>
+                                    </div>
+                                    <div class="bg-slate-900/80 rounded-lg p-1.5">
+                                        <div class="text-[9px] text-slate-500">VOLTAGE</div>
+                                        <div id="oledVolts" class="text-xs sm:text-sm font-bold text-slate-200">20.0V</div>
+                                    </div>
+                                    <div class="bg-slate-900/80 rounded-lg p-1.5">
+                                        <div class="text-[9px] text-slate-500">CURRENT</div>
+                                        <div id="oledAmps" class="text-xs sm:text-sm font-bold text-amberPulse">3.25A</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Brushed Aluminum Texture Detail & Laser Etching -->
+                            <div class="mt-8 mb-3 flex items-center justify-between px-2">
+                                <div>
+                                    <div class="text-xs font-bold tracking-[0.22em] text-slate-400 uppercase">VOLTCORE</div>
+                                    <div class="text-[10px] font-mono text-slate-600">20,000mAh / 74Wh Li-Polymer</div>
+                                </div>
+                                <!-- Interactive Power Button on Hardware -->
+                                <button id="cycleHardwareModeBtn" class="px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 border border-slate-600/70 text-[11px] font-mono text-cyanGlow transition-all active:scale-95" title="Click to toggle OLED telemetry modes">
+                                    ↻ Cycle Mode
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-xs font-mono text-slate-500 mt-4">Interactive Render • Tap "Cycle Mode" on chassis</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Pillars / Key Specifications Grid -->
+    <section id="features" class="py-20 bg-carbon/60 border-y border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <h2 class="text-sm font-mono uppercase tracking-widest text-cyanGlow mb-2">Engineered Without Compromise</h2>
+                <p class="text-3xl sm:text-4xl font-bold text-white">Four Pillars of Portable Dominance</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: 20,000mAh -->
+                <div class="rounded-2xl bg-slateDark/70 border border-slate-800 hover:border-cyanGlow/50 p-6 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-cyanGlow/10 text-cyanGlow flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 10.5h.375c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125H21M3.75 18h15A2.25 2.25 0 0021 15.75v-6a2.25 2.25 0 00-2.25-2.25h-15A2.25 2.25 0 001.5 9.75v6A2.25 2.25 0 003.75 18z"/>
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-mono font-bold text-white mb-1">20,000 mAh</div>
+                    <h3 class="text-base font-semibold text-cyanGlow mb-2">Multi-Day Reserve</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        High-density 21700 automotive-grade cells deliver 4.2 full charges for an iPhone 16 Pro or 1.3 full charges for a MacBook Air.
+                    </p>
+                </div>
+
+                <!-- Card 2: 65W USB-C PD -->
+                <div class="rounded-2xl bg-slateDark/70 border border-slate-800 hover:border-amberPulse/50 p-6 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-amberPulse/10 text-amberPulse flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-mono font-bold text-white mb-1">65W USB-C PD</div>
+                    <h3 class="text-base font-semibold text-amberPulse mb-2">Bi-Directional Speed</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Power demanding laptops at full speed—and recharge VoltCore itself from 0% to 80% in just 58 minutes via USB-C1.
+                    </p>
+                </div>
+
+                <!-- Card 3: Multi-Device Output -->
+                <div class="rounded-2xl bg-slateDark/70 border border-slate-800 hover:border-cyanGlow/50 p-6 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-cyanGlow/10 text-cyanGlow flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-mono font-bold text-white mb-1">3-Port Matrix</div>
+                    <h3 class="text-base font-semibold text-cyanGlow mb-2">Simultaneous Load</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Dual USB-C + high-current USB-A with dynamic power allocation charges your laptop, tablet, and earbuds simultaneously.
+                    </p>
+                </div>
+
+                <!-- Card 4: Airline Safe -->
+                <div class="rounded-2xl bg-slateDark/70 border border-slate-800 hover:border-amberPulse/50 p-6 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-amberPulse/10 text-amberPulse flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </div>
+                    <div class="text-2xl font-mono font-bold text-white mb-1">74Wh Rated</div>
+                    <h3 class="text-base font-semibold text-amberPulse mb-2">100% Airline-Safe</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Engineered well below the 100Wh FAA/TSA carry-on limit with ThermalGuard™ active temperature sensing 200 times per second.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Charging Time & Compatibility Simulator -->
+    <section id="simulator" class="py-20 sm:py-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-mono uppercase tracking-widest text-amberPulse">Interactive Lab</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Charging Time & Capacity Estimator</h2>
+                <p class="text-slate-400 mt-3 text-sm sm:text-base">
+                    Select your device and current battery level to calculate real-world charging times and total recharges from a single VoltCore Pro 20K.
+                </p>
+            </div>
+
+            <div class="rounded-3xl bg-carbon border border-slate-800 p-6 sm:p-10 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left Controls -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div>
+                            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">1. Select Target Device</label>
+                            <div id="deviceSelectorGrid" class="grid grid-cols-2 gap-3">
+                                <button type="button" data-device="macbook" class="device-btn active text-left p-3.5 rounded-xl border border-cyanGlow bg-cyanGlow/10 text-white transition-all">
+                                    <div class="font-semibold text-sm">MacBook Pro / Air</div>
+                                    <div class="text-xs font-mono text-cyanGlow mt-0.5">65W USB-C PD</div>
+                                </button>
+                                <button type="button" data-device="iphone" class="device-btn text-left p-3.5 rounded-xl border border-slate-800 bg-slateDark/60 hover:border-slate-600 text-slate-300 transition-all">
+                                    <div class="font-semibold text-sm">iPhone 16 / 17 Pro</div>
+                                    <div class="text-xs font-mono text-slate-400 mt-0.5">30W Fast Charge</div>
+                                </button>
+                                <button type="button" data-device="steamdeck" class="device-btn text-left p-3.5 rounded-xl border border-slate-800 bg-slateDark/60 hover:border-slate-600 text-slate-300 transition-all">
+                                    <div class="font-semibold text-sm">Steam Deck / Switch</div>
+                                    <div class="text-xs font-mono text-slate-400 mt-0.5">45W PD Gaming</div>
+                                </button>
+                                <button type="button" data-device="ipad" class="device-btn text-left p-3.5 rounded-xl border border-slate-800 bg-slateDark/60 hover:border-slate-600 text-slate-300 transition-all">
+                                    <div class="font-semibold text-sm">iPad Pro M4 13"</div>
+                                    <div class="text-xs font-mono text-slate-400 mt-0.5">38W USB-C PD</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Starting Battery Slider -->
+                        <div class="pt-2">
+                            <div class="flex items-center justify-between mb-2">
+                                <label for="batterySlider" class="text-xs font-mono uppercase tracking-wider text-slate-400">2. Current Device Battery</label>
+                                <span id="sliderValueLabel" class="font-mono font-bold text-cyanGlow text-base">15%</span>
+                            </div>
+                            <input id="batterySlider" type="range" min="0" max="80" value="15" class="w-full h-2 bg-slateDark rounded-lg appearance-none cursor-pointer accent-cyanGlow">
+                            <div class="flex justify-between text-[11px] font-mono text-slate-500 mt-1.5">
+                                <span>0% (Empty)</span>
+                                <span>40%</span>
+                                <span>80% (Top-off)</span>
+                            </div>
+                        </div>
+
+                        <!-- Multi-Device Toggle -->
+                        <div class="flex items-center justify-between p-4 rounded-xl bg-slateDark/60 border border-slate-800">
+                            <div>
+                                <div class="text-sm font-medium text-white">Simultaneous Phone Top-Up</div>
+                                <div class="text-xs text-slate-400">Allocate 20W to USB-C2 while charging primary device</div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="dualPortToggle" class="sr-only peer">
+                                <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amberPulse"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Right Telemetry Readout -->
+                    <div class="lg:col-span-6 rounded-2xl bg-obsidian border border-slate-800/90 p-6 sm:p-8 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <div>
+                                <div class="text-xs font-mono text-slate-400 uppercase">Active Output Profile</div>
+                                <div id="simDeviceTitle" class="text-xl font-bold text-white mt-0.5">MacBook Pro / Air</div>
+                            </div>
+                            <span id="simWattBadge" class="px-3 py-1.5 rounded-lg bg-cyanGlow/15 border border-cyanGlow/40 font-mono font-bold text-cyanGlow text-sm">
+                                65W MAX
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-carbon border border-slate-800/80">
+                                <div class="text-xs font-mono text-slate-400">Time to 80% Fast-Fill</div>
+                                <div id="simTime80" class="text-2xl sm:text-3xl font-mono font-bold text-cyanGlow mt-1">36 min</div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-carbon border border-slate-800/80">
+                                <div class="text-xs font-mono text-slate-400">Total Full Charges</div>
+                                <div id="simTotalCharges" class="text-2xl sm:text-3xl font-mono font-bold text-amberPulse mt-1">1.2x</div>
+                            </div>
+                        </div>
+
+                        <!-- Visual Progress Bar -->
+                        <div>
+                            <div class="flex justify-between text-xs font-mono text-slate-400 mb-2">
+                                <span>VoltCore Capacity Used per Charge</span>
+                                <span id="simCapacityUsed">78% of 20,000mAh</span>
+                            </div>
+                            <div class="w-full h-3 rounded-full bg-slateDark overflow-hidden p-0.5 border border-slate-800">
+                                <div id="simUsageBar" class="h-full rounded-full bg-gradient-to-r from-cyanGlow to-amberPulse transition-all duration-500" style="width: 78%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Technical Specifications Table -->
+    <section id="specs" class="py-20 bg-carbon/60 border-y border-slate-800/70">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-cyanGlow">Full Datasheet</span>
+                    <h2 class="text-3xl font-bold text-white mt-1">Technical Specifications</h2>
+                </div>
+                <span class="text-xs font-mono text-slate-400">Model: VC-P20K-BLK • Rev 2.4</span>
+            </div>
+
+            <div class="rounded-2xl bg-obsidian border border-slate-800 divide-y divide-slate-800/80 overflow-hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 sm:px-6 gap-1 sm:gap-4">
+                    <div class="text-sm font-mono text-slate-400">Battery Capacity</div>
+                    <div class="sm:col-span-2 text-sm font-medium text-white">20,000mAh / 74Wh (4 × 5,000mAh 21700 High-Discharge Cells)</div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 sm:px-6 gap-1 sm:gap-4">
+                    <div class="text-sm font-mono text-slate-400">USB-C1 Input / Output</div>
+                    <div class="sm:col-span-2 text-sm font-medium text-cyanGlow">5V⎓3A, 9V⎓3A, 12V⎓3A, 15V⎓3A, 20V⎓3.25A (65W Max PD 3.1 / PPS)</div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 sm:px-6 gap-1 sm:gap-4">
+                    <div class="text-sm font-mono text-slate-400">USB-C2 Output</div>
+                    <div class="sm:col-span-2 text-sm font-medium text-white">5V⎓3A, 9V⎓3A, 12V⎓2.5A (30W Max PD / PPS)</div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 sm:px-6 gap-1 sm:gap-4">
+                    <div class="text-sm font-mono text-slate-400">USB-A Output</div>
+                    <div class="sm:col-span-2 text-sm font-medium text-white">5V⎓3A, 9V⎓2A, 10V⎓2.25A, 12V⎓1.5A (22.5W Max SCP / QC 4+)</div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 sm:px-6 gap-1 sm:gap-4">
+                    <div class="text-sm font-mono text-slate-400">Dimensions & Weight</div>
+                    <div class="sm:col-span-2 text-sm font-medium text-white">152 × 54 × 49 mm • 420g (14.8 oz) CNC Bead-Blasted Aluminum</div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 p-4 sm:px-6 gap-1 sm:gap-4">
+                    <div class="text-sm font-mono text-slate-400">Protection Suite</div>
+                    <div class="sm:col-span-2 text-sm font-medium text-slate-300">Over-Voltage, Over-Current, Short-Circuit, Dual NTC Thermal Sensors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section id="reviews" class="py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-amberPulse">Verified Field Tests</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Trusted by Creators & Engineers</h2>
+                </div>
+                <div class="flex items-center gap-3 bg-slateDark/80 border border-slate-800 px-4 py-2.5 rounded-xl">
+                    <div class="text-amberPulse text-lg">★★★★★</div>
+                    <div class="text-sm font-mono text-slate-200"><strong>4.9/5</strong> from 1,420+ early backers</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="rounded-2xl bg-carbon border border-slate-800 p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-amberPulse text-sm mb-3">
+                            <span>★★★★★</span>
+                            <span class="text-xs font-mono text-slate-500">Verified Buyer</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            "Sustained 64.2W into my 14-inch MacBook Pro during a 6-hour flight from London to NYC without throttling once. The OLED wattage readout is genuinely useful instead of four vague blinking dots."
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/80 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-cyanGlow/20 text-cyanGlow font-mono font-bold text-xs flex items-center justify-center">MK</div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Marcus Vance</div>
+                            <div class="text-xs text-slate-500">Cinematographer & DP</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="rounded-2xl bg-carbon border border-slate-800 p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-amberPulse text-sm mb-3">
+                            <span>★★★★★</span>
+                            <span class="text-xs font-mono text-slate-500">Verified Buyer</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            "The aluminum shell acts like a passive heatsink—it stays noticeably cooler than plastic bricks. Being able to recharge the bank itself at 65W over lunch is a complete game changer."
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/80 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-amberPulse/20 text-amberPulse font-mono font-bold text-xs flex items-center justify-center">EL</div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Elena Rostova</div>
+                            <div class="text-xs text-slate-500">Embedded Systems Engineer</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="rounded-2xl bg-carbon border border-slate-800 p-6 flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center justify-between text-amberPulse text-sm mb-3">
+                            <span>★★★★★</span>
+                            <span class="text-xs font-mono text-slate-500">Verified Buyer</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            "Slips effortlessly into the side bottle sleeve of my backpack. Powers my Steam Deck OLED at full 45W while topping up my phone at the same time. Worth every single penny."
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-800/80 flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-cyanGlow/20 text-cyanGlow font-mono font-bold text-xs flex items-center justify-center">DT</div>
+                        <div>
+                            <div class="text-sm font-semibold text-white">Devon Takahashi</div>
+                            <div class="text-xs text-slate-500">Mobile App Architect</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pre-Order Call-To-Action Section -->
+    <section id="preorder" class="py-20 pb-28">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative rounded-3xl bg-gradient-to-br from-slateDark via-carbon to-obsidian border border-cyanGlow/40 p-8 sm:p-12 overflow-hidden shadow-cyan-glow">
+                <div class="absolute -right-20 -top-20 w-72 h-72 bg-cyanGlow/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="inline-block px-3 py-1 rounded-full bg-amberPulse/15 border border-amberPulse/40 text-amberPulse text-xs font-mono uppercase">
+                            Early-Bird Allocation • Save $30
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                            Reserve Your VoltCore Pro 20K
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Includes the VoltCore Pro 20K Power Bank, 1.2m 100W Kevlar-braided USB-C to USB-C cable, neoprene travel pouch, and 2-year priority replacement warranty.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-obsidian/90 border border-slate-800 rounded-2xl p-6 space-y-4">
+                        <div class="flex items-baseline justify-between">
+                            <div>
+                                <span class="text-3xl font-extrabold text-white">$89</span>
+                                <span class="text-sm text-slate-500 line-through ml-2">$119</span>
+                            </div>
+                            <span class="text-xs font-mono text-cyanGlow">FREE EXPRESS SHIPPING</span>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <button onclick="addToCart('VoltCore Pro 20K — Single Unit', 89)" class="w-full py-3.5 px-5 rounded-xl bg-cyanGlow hover:bg-cyan-300 text-obsidian font-bold text-sm transition-all shadow-cyan-glow">
+                                Add Single Unit to Cart — $89
+                            </button>
+                            <button onclick="addToCart('VoltCore Pro 20K — Creator Duo Pack (2x)', 165)" class="w-full py-3 px-5 rounded-xl bg-slateDark hover:bg-slate-800 border border-amberPulse/50 text-amberPulse font-semibold text-xs font-mono transition-all">
+                                + Add Creator Duo Pack (2x) — $165 (Save $73)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-obsidian py-10 text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">VOLTCORE</span>
+                <span>© 2026 VoltCore Hardware Labs. All rights reserved.</span>
+            </div>
+            <div class="flex gap-6 font-mono text-xs">
+                <a href="#features" class="hover:text-cyanGlow transition-colors">Safety Certifications</a>
+                <a href="#specs" class="hover:text-cyanGlow transition-colors">UN38.3 Air Compliance</a>
+                <a href="#preorder" class="hover:text-cyanGlow transition-colors">Warranty</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Slide-Over Pre-Order Cart Drawer / Modal -->
+    <div id="cartOverlay" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm transition-opacity">
+        <div class="fixed inset-y-0 right-0 max-w-md w-full bg-carbon border-l border-slate-800 shadow-2xl flex flex-col justify-between p-6">
+            <div>
+                <!-- Modal Header -->
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyanGlow"></span>
+                        <h3 class="text-lg font-bold text-white">Pre-Order Reservation</h3>
+                    </div>
+                    <button id="closeCartBtn" class="p-2 rounded-lg bg-slateDark hover:bg-slate-800 text-slate-400 hover:text-white">
+                        ✕
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cartItemsList" class="mt-6 space-y-4 max-h-[55vh] overflow-y-auto pr-1">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Cart Footer / Checkout Action -->
+            <div class="pt-4 border-t border-slate-800 space-y-4">
+                <div class="flex items-center justify-between text-sm">
+                    <span class="text-slate-400">Insured Express Shipping</span>
+                    <span class="font-mono text-cyanGlow">FREE</span>
+                </div>
+                <div class="flex items-center justify-between text-lg font-bold text-white">
+                    <span>Estimated Total</span>
+                    <span id="cartTotalAmount" class="font-mono text-amberPulse">$0</span>
+                </div>
+                <button id="completeCheckoutBtn" class="w-full py-4 rounded-xl bg-cyanGlow hover:bg-cyan-300 text-obsidian font-bold text-sm shadow-cyan-glow transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+                    Complete Pre-Order Reservation
+                </button>
+                <p id="checkoutFeedback" class="hidden text-center text-xs font-mono text-cyanGlow bg-cyanGlow/10 border border-cyanGlow/30 rounded-lg p-3">
+                    ✓ Reservation confirmed! Check your inbox for your Batch 01 tracking priority pass.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Logic -->
+    <script>
+        // 1. Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Interactive Hardware OLED Telemetry Mode Cycler
+        const oledModes = [
+            {
+                label: 'PD FAST OUT',
+                percent: 98,
+                time: '1h 42m remaining',
+                watts: '65.0W',
+                volts: '20.0V',
+                amps: '3.25A',
+                temp: '31.4°C',
+                colorClass: 'text-cyanGlow'
+            },
+            {
+                label: 'MULTI-PORT',
+                percent: 84,
+                time: '1h 15m remaining',
+                watts: '62.5W',
+                volts: '20.0V',
+                amps: '3.12A',
+                temp: '33.8°C',
+                colorClass: 'text-amberPulse'
+            },
+            {
+                label: 'RECHARGING IN',
+                percent: 67,
+                time: '0h 24m to full',
+                watts: '65.0W',
+                volts: '20.0V',
+                amps: '3.25A',
+                temp: '32.1°C',
+                colorClass: 'text-cyanGlow'
+            }
+        ];
+        let currentOledIndex = 0;
+
+        document.getElementById('cycleHardwareModeBtn').addEventListener('click', () => {
+            currentOledIndex = (currentOledIndex + 1) % oledModes.length;
+            const mode = oledModes[currentOledIndex];
+
+            const labelEl = document.getElementById('oledModeLabel');
+            labelEl.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-current animate-ping"></span> ${mode.label}`;
+            labelEl.className = `flex items-center gap-1.5 ${mode.colorClass}`;
+
+            document.getElementById('oledPercent').textContent = mode.percent;
+            document.getElementById('oledTimeRemaining').textContent = mode.time;
+            document.getElementById('oledWatts').textContent = mode.watts;
+            document.getElementById('oledVolts').textContent = mode.volts;
+            document.getElementById('oledAmps').textContent = mode.amps;
+            document.getElementById('oledTemp').textContent = mode.temp;
+            document.getElementById('oledRing').setAttribute('stroke-dasharray', `${mode.percent}, 100`);
+        });
+
+        // 3. Interactive Charging Time & Compatibility Simulator
+        const deviceProfiles = {
+            macbook: { name: 'MacBook Pro / Air', maxWatts: 65, dualWatts: 45, batteryWh: 58, fullTimeMins: 72 },
+            iphone: { name: 'iPhone 16 / 17 Pro', maxWatts: 30, dualWatts: 30, batteryWh: 14, fullTimeMins: 52 },
+            steamdeck: { name: 'Steam Deck / Switch', maxWatts: 45, dualWatts: 45, batteryWh: 50, fullTimeMins: 82 },
+            ipad: { name: 'iPad Pro M4 13"', maxWatts: 38, dualWatts: 38, batteryWh: 39, fullTimeMins: 76 }
+        };
+
+        let selectedDeviceKey = 'macbook';
+        const batterySlider = document.getElementById('batterySlider');
+        const dualPortToggle = document.getElementById('dualPortToggle');
+
+        function updateSimulator() {
+            const profile = deviceProfiles[selectedDeviceKey];
+            const startPercent = parseInt(batterySlider.value, 10);
+            const isDual = dualPortToggle.checked;
+
+            document.getElementById('sliderValueLabel').textContent = `${startPercent}%`;
+            document.getElementById('simDeviceTitle').textContent = profile.name;
+
+            const effectiveWatts = isDual ? profile.dualWatts : profile.maxWatts;
+            document.getElementById('simWattBadge').textContent = `${effectiveWatts}W MAX`;
+
+            // Calculate time to reach 80%
+            const percentNeeded = Math.max(0, 80 - startPercent);
+            const speedScale = profile.maxWatts / effectiveWatts;
+            const minsTo80 = Math.round((percentNeeded / 80) * (profile.fullTimeMins * 0.65) * speedScale);
+            document.getElementById('simTime80').textContent = minsTo80 === 0 ? 'Already ≥80%' : `${minsTo80} min`;
+
+            // Usable energy of 74Wh powerbank (~86% real conversion efficiency = ~63.6Wh usable)
+            const usableWh = 63.6;
+            const totalCharges = (usableWh / profile.batteryWh).toFixed(1);
+            document.getElementById('simTotalCharges').textContent = `${totalCharges}x`;
+
+            // Capacity consumed for a full 0-100% cycle
+            const capacityUsedPct = Math.min(100, Math.round((profile.batteryWh / usableWh) * 100));
+            document.getElementById('simCapacityUsed').textContent = `${capacityUsedPct}% of 20,000mAh`;
+            document.getElementById('simUsageBar').style.width = `${capacityUsedPct}%`;
+        }
+
+        document.querySelectorAll('.device-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.device-btn').forEach(b => {
+                    b.classList.remove('active', 'border-cyanGlow', 'bg-cyanGlow/10', 'text-white');
+                    b.classList.add('border-slate-800', 'bg-slateDark/60', 'text-slate-300');
+                });
+                btn.classList.add('active', 'border-cyanGlow', 'bg-cyanGlow/10', 'text-white');
+                btn.classList.remove('border-slate-800', 'bg-slateDark/60', 'text-slate-300');
+                selectedDeviceKey = btn.dataset.device;
+                updateSimulator();
+            });
+        });
+
+        batterySlider.addEventListener('input', updateSimulator);
+        dualPortToggle.addEventListener('change', updateSimulator);
+        updateSimulator();
+
+        // 4. Interactive Cart & Modal Preview
+        let cart = [];
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartItemsList = document.getElementById('cartItemsList');
+        const cartTotalAmount = document.getElementById('cartTotalAmount');
+        const navCartBadge = document.getElementById('navCartBadge');
+        const completeCheckoutBtn = document.getElementById('completeCheckoutBtn');
+        const checkoutFeedback = document.getElementById('checkoutFeedback');
+
+        function renderCart() {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+            if (totalQty > 0) {
+                navCartBadge.textContent = totalQty;
+                navCartBadge.classList.remove('hidden');
+                completeCheckoutBtn.disabled = false;
+            } else {
+                navCartBadge.classList.add('hidden');
+                completeCheckoutBtn.disabled = true;
+            }
+
+            cartTotalAmount.textContent = `$${totalPrice}`;
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div class="text-center py-12 text-slate-500 text-sm">
+                        Your reservation bag is empty.<br>Select a VoltCore Pro 20K bundle to continue.
+                    </div>
+                `;
+                return;
+            }
+
+            cartItemsList.innerHTML = cart.map((item, idx) => `
+                <div class="p-4 rounded-xl bg-slateDark border border-slate-800 flex items-center justify-between gap-3">
+                    <div>
+                        <div class="text-sm font-semibold text-white">${item.name}</div>
+                        <div class="text-xs font-mono text-cyanGlow mt-1">$${item.price} each</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="updateQty(${idx}, -1)" class="w-7 h-7 rounded-lg bg-obsidian border border-slate-700 text-slate-300 hover:text-white font-mono">-</button>
+                        <span class="w-5 text-center font-mono text-sm text-white">${item.qty}</span>
+                        <button onclick="updateQty(${idx}, 1)" class="w-7 h-7 rounded-lg bg-obsidian border border-slate-700 text-slate-300 hover:text-white font-mono">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.addToCart = function(name, price) {
+            checkoutFeedback.classList.add('hidden');
+            const existing = cart.find(i => i.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            renderCart();
+            cartOverlay.classList.remove('hidden');
+        };
+
+        window.updateQty = function(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        };
+
+        document.getElementById('openCartBtn').addEventListener('click', () => {
+            renderCart();
+            cartOverlay.classList.remove('hidden');
+        });
+
+        document.getElementById('closeCartBtn').addEventListener('click', () => {
+            cartOverlay.classList.add('hidden');
+        });
+
+        cartOverlay.addEventListener('click', (e) => {
+            if (e.target === cartOverlay) {
+                cartOverlay.classList.add('hidden');
+            }
+        });
+
+        completeCheckoutBtn.addEventListener('click', () => {
+            checkoutFeedback.classList.remove('hidden');
+            cart = [];
+            renderCart();
+        });
+    </script>
+</body>
+</html>
